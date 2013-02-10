@@ -1,0 +1,38 @@
+2013-02-10 17:10:56,297 blockingrouter       INFO     Starting RapidSMS...
+2013-02-10 17:10:56,300 blockingrouter       DEBUG    Started
+2013-02-10 17:10:56,300 blockingrouter       INFO     Starting RapidSMS...
+2013-02-10 17:10:56,300 blockingrouter       DEBUG    Started
+2013-02-10 17:10:56,300 blockingrouter       INFO     Incoming (897476 via message_tester): 
+2013-02-10 17:10:56,300 blockingrouter       DEBUG    In filter phase
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: handlers> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: default> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: locations> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: messagelog> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In parse phase
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: handlers> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: default> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: locations> app
+2013-02-10 17:10:56,301 blockingrouter       DEBUG    In <app: messagelog> app
+2013-02-10 17:10:56,490 blockingrouter       DEBUG    In handle phase
+2013-02-10 17:10:56,490 blockingrouter       DEBUG    In <app: handlers> app
+2013-02-10 17:10:56,492 blockingrouter       DEBUG    In <app: default> app
+2013-02-10 17:10:56,493 blockingrouter       DEBUG    In <app: locations> app
+2013-02-10 17:10:56,493 blockingrouter       DEBUG    In <app: messagelog> app
+2013-02-10 17:10:56,493 blockingrouter       DEBUG    In default phase
+2013-02-10 17:10:56,493 blockingrouter       DEBUG    In <app: handlers> app
+2013-02-10 17:10:56,493 blockingrouter       DEBUG    In <app: default> app
+2013-02-10 17:10:56,493 blockingrouter       DEBUG    In <app: locations> app
+2013-02-10 17:10:56,494 blockingrouter       DEBUG    In <app: messagelog> app
+2013-02-10 17:10:56,494 blockingrouter       DEBUG    In cleanup phase
+2013-02-10 17:10:56,494 blockingrouter       DEBUG    In <app: handlers> app
+2013-02-10 17:10:56,494 blockingrouter       DEBUG    In <app: default> app
+2013-02-10 17:10:56,494 blockingrouter       DEBUG    In <app: locations> app
+2013-02-10 17:10:56,494 blockingrouter       DEBUG    In <app: messagelog> app
+2013-02-10 17:10:56,495 blockingrouter       INFO     Outgoing (897476 via message_tester): Sorry, RapidSMS could not understand your message.
+2013-02-10 17:10:56,495 blockingrouter       DEBUG    Out outgoing phase
+2013-02-10 17:10:56,495 blockingrouter       DEBUG    Out <app: messagelog> app
+2013-02-10 17:10:56,685 blockingrouter       DEBUG    Out <app: locations> app
+2013-02-10 17:10:56,685 blockingrouter       DEBUG    Out <app: default> app
+2013-02-10 17:10:56,685 blockingrouter       DEBUG    Out <app: handlers> app
+2013-02-10 17:10:56,686 blockingrouter       DEBUG    Stopping...
+2013-02-10 17:10:56,686 blockingrouter       INFO     Stopped
