@@ -1,3 +1,5 @@
 django==1.4.3
 South==0.7.6
 django-appconf==0.5
+-e git+https://github.com/caktus/rapidsms.git@feature/add-bootstrap#egg=rapidsms
+-e git+https://github.com/caktus/rapidsms-textpoll#egg=textpoll
