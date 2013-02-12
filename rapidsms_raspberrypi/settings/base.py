@@ -187,22 +187,38 @@ LOGGING = {
         },
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        'blockingrouter': {
+        '': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
         },
+        # 'django.request': {
+        #     'handlers': ['mail_admins'],
+        #     'level': 'ERROR',
+        #     'propagate': True,
+        # },
+        # 'blockingrouter': {
+        #     'handlers': ['file'],
+        #     'level': 'DEBUG',
+        #     'propagate': True,
+        # },
     }
 }
 
 INSTALLED_BACKENDS = {
     "message_tester": {
         "ENGINE": "rapidsms.contrib.httptester.backend",
+    },
+    "kannel-usb0-smsc": {
+        "ENGINE":  "rapidsms.backends.kannel.outgoing",
+        "sendsms_url": "http://127.0.0.1:13013/cgi-bin/sendsms",
+        "sendsms_params": {"smsc": "usb0-modem",
+                           "from": "+19195250114", # not set automatically by SMSC
+                           "username": "rapidsms",
+                           "password": "CHANGE-ME"}, # or set in localsettings.py
+        "coding": 0,
+        "charset": "ascii",
+        "encode_errors": "ignore", # strip out unknown (unicode) characters
     },
 }
 

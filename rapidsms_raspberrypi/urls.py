@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from rapidsms.backends.kannel.views import KannelBackendView
 
 
 admin.autodiscover()
@@ -22,4 +23,7 @@ urlpatterns = patterns('',
     (r'^messagelog/', include('rapidsms.contrib.messagelog.urls')),
     (r'^messaging/', include('rapidsms.contrib.messaging.urls')),
     (r'^registration/', include('rapidsms.contrib.registration.urls')),
+    # backends
+    url(r"^backend/kannel-usb0-smsc/$",
+        KannelBackendView.as_view(backend_name="kannel-usb0-smsc")),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
