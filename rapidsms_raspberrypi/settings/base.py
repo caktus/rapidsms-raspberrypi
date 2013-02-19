@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     "rapidsms.contrib.registration",
     "rapidsms.contrib.echo",
     "textpoll",
+    "south",
 )
 
 # A sample logging configuration. The only tangible logging
