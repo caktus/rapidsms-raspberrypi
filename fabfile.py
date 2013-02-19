@@ -17,7 +17,7 @@ CONF_ROOT = os.path.join(PROJECT_ROOT, 'conf')
 SERVER_ROLES = ['app', 'lb', 'db']
 env.project = 'rapidsms_raspberrypi'
 env.project_user = 'rapidsms_raspberrypi'
-env.repo = u'' # FIXME: Add repo URL
+env.repo = u'git@github.com:caktus/rapidsms-raspberrypi.git'
 env.shell = '/bin/bash -c'
 env.disable_known_hosts = True
 env.ssh_port = 2222
@@ -41,18 +41,18 @@ def vagrant():
 @task
 def staging():
     env.environment = 'staging'
-    env.hosts = [] # FIXME: Add staging server hosts
+    env.hosts = ['10.20.10.95']  # FIXME: Add staging server hosts
     env.branch = 'master'
-    env.server_name = '' # FIXME: Add staging server name
+    env.server_name = 'raspberryio-poll'  # FIXME: Add staging server name
     setup_path()
 
 
 @task
 def production():
     env.environment = 'production'
-    env.hosts = [] # FIXME: Add production hosts
+    env.hosts = []  # FIXME: Add production hosts
     env.branch = 'master'
-    env.server_name = '' # FIXME: Add production server name
+    env.server_name = ''  # FIXME: Add production server name
     setup_path()
 
 
@@ -63,7 +63,7 @@ def setup_path():
     env.project_root = os.path.join(env.code_root, env.project)
     env.virtualenv_root = os.path.join(env.root, 'env')
     env.log_dir = os.path.join(env.root, 'log')
-    env.db = '%s_%s' % (env.project, env.environment)
+    env.db = env.project
     env.vhost = '%s_%s' % (env.project, env.environment)
     env.settings = '%(project)s.settings.%(environment)s' % env
 
@@ -121,16 +121,16 @@ def install_packages(*roles):
                     source = config.get(section, 'source')
                     key = config.get(section, 'key')
                     system.add_apt_source(source=source, key=key, update=False)
-            sudo(u"apt-get update")
+            # sudo(u"apt-get update")
             sudo(u"apt-get install -y %s" % config.get(role, 'packages'))
-            sudo(u"apt-get upgrade -y")
+            # sudo(u"apt-get upgrade -y")
 
 
 @task
 def setup_server(*roles):
     """Install packages and add configurations for server given roles."""
     require('environment')
-    # Set server locale    
+    # Set server locale
     sudo('/usr/sbin/update-locale LANG=en_US.UTF-8')
     roles = list(roles)
     if roles == ['all', ]:
@@ -158,7 +158,8 @@ def setup_server(*roles):
         with settings(user=env.project_user):
             # TODO: Add known hosts prior to clone.
             # i.e. ssh -o StrictHostKeyChecking=no git@github.com
-            run('git clone %(repo)s %(code_root)s' % env)
+            if not files.exists(env.code_root):
+                run('git clone %(repo)s %(code_root)s' % env)
             with cd(env.code_root):
                 run('git checkout %(branch)s' % env)
         # Install and create virtualenv
@@ -170,11 +171,10 @@ def setup_server(*roles):
             test_for_virtualenv = run('which virtualenv')
         if not test_for_virtualenv:
             sudo("pip install -U virtualenv")
-        project_run('virtualenv -p python2.6 --clear --distribute %s' % env.virtualenv_root)
-        path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.6', 'site-packages', 'project.pth')
+        project_run('virtualenv -p python2.7 --clear --distribute %s' % env.virtualenv_root)
+        path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7', 'site-packages', 'project.pth')
         files.append(path_file, env.code_root, use_sudo=True)
         sudo('chown %s:%s %s' % (env.project_user, env.project_user, path_file))
-        sudo('npm install less -g')
         update_requirements()
         upload_supervisor_app_conf(app_name=u'gunicorn')
         upload_supervisor_app_conf(app_name=u'group')
