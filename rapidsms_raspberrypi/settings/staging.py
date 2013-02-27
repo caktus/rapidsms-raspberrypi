@@ -3,7 +3,7 @@ from rapidsms_raspberrypi.settings.base import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DATABASES['default']['NAME'] = 'rapidsms_raspberrypi_staging'
+DATABASES['default']['NAME'] = '/var/tmp/rapidsms_raspberrypi_staging'
 
 INSTALLED_APPS += (
     'gunicorn',
