@@ -15,8 +15,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'rapidsms_raspberrypi',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/var/tmp/rapidsms_raspberrypi',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -148,6 +148,8 @@ INSTALLED_APPS = (
     "rapidsms.contrib.registration",
     "rapidsms.contrib.echo",
     "textpoll",
+    "django_tables2",
+    "selectable",
     "south",
 )
 
