@@ -148,8 +148,6 @@ INSTALLED_APPS = (
     "rapidsms.contrib.registration",
     "rapidsms.contrib.echo",
     "textpoll",
-    "django_tables2",
-    "selectable",
     "south",
 )
 
