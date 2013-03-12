@@ -37,9 +37,8 @@ Exit the virtualenv and reactivate it to activate the settings just changed::
     deactivate
     workon rapidsms_raspberrypi
 
-Create the Postgres database and run the initial syncdb/migrate::
+Create the Sqlite database and run the initial syncdb/migrate::
 
-    createdb -E UTF-8 rapidsms_raspberrypi
     python manage.py syncdb
     python manage.py migrate
 
