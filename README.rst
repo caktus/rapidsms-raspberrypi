@@ -37,7 +37,7 @@ Exit the virtualenv and reactivate it to activate the settings just changed::
     deactivate
     workon rapidsms_raspberrypi
 
-Create the Sqlite database and run the initial syncdb/migrate::
+Create the SQLite database and run the initial syncdb/migrate::
 
     python manage.py syncdb
     python manage.py migrate
