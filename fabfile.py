@@ -41,7 +41,7 @@ def vagrant():
 @task
 def staging():
     env.environment = 'staging'
-    env.hosts = ['10.20.10.95']  # FIXME: Add staging server hosts
+    env.hosts = ['192.168.1.147']  # FIXME: Add staging server hosts
     env.branch = 'master'
     env.server_name = 'raspberryio-poll'  # FIXME: Add staging server name
     setup_path()
